@@ -18,13 +18,13 @@ public class RegistrationService {
         // Insert some fake data
         Registrations r = new Registrations();
         r.setEmail("wilma@gmail.com");
-        r.setName("wilma.com");
+        r.setName("wilma");
         r.setPhone("123435");
         newRegistration(r);
 
         r = new Registrations();
         r.setEmail("barney@gmail.com");
-        r.setName("barney.com");
+        r.setName("barney");
         r.setPhone("345678");
         newRegistration(r);
     }
