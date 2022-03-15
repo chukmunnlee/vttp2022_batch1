@@ -21,6 +21,9 @@ public class AppConfig {
 	@Value("${spring.redis.database}")
 	private Integer redisDatabase;
 
+	@Value("${this.is.my.prop}")
+	private String myProp;
+
 	@Bean(name="games")
 	public RedisTemplate<String, String> createRedis() {
 		RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
@@ -34,10 +37,13 @@ public class AppConfig {
 
 		RedisTemplate<String, String> template = new RedisTemplate<>();
 		template.setConnectionFactory(jedisFac);
+
+		// ????
 		template.setKeySerializer(new StringRedisSerializer());
 		template.setValueSerializer(new StringRedisSerializer());
 		template.setHashKeySerializer(new StringRedisSerializer());
 		template.setHashValueSerializer(new StringRedisSerializer());
+
 		return template;
 	}
 

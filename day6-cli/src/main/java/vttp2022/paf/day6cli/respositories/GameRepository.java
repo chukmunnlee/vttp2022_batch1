@@ -1,5 +1,7 @@
 package vttp2022.paf.day6cli.respositories;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,6 +18,13 @@ public class GameRepository {
 
 	public void save(JsonObject obj) {
 		Integer gid = obj.getInt("gid");
-		redisTemplate.opsForHash().put("%d".formatted(gid), "rec", obj.toString());
+		redisTemplate.opsForHash().put(
+			"%d".formatted(gid), 
+			"rec", 
+			obj.toString());
+	}
+
+	public Set<String> findKeys(String pattern) {
+		return redisTemplate.keys(pattern);
 	}
 }

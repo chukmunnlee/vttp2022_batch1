@@ -1,6 +1,7 @@
 package vttp2022.paf.day6cli;
 
 import java.io.FileInputStream;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +21,6 @@ public class Day6CliApplication implements CommandLineRunner {
 
 	@Autowired
 	private GameRepository gameRepo;
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(Day6CliApplication.class, args);
@@ -50,6 +50,10 @@ public class Day6CliApplication implements CommandLineRunner {
 			});
 
 		System.out.println("completed!");
+
+		Set<String> keys = gameRepo.findKeys("*12*");
+		for (String k: keys)
+			System.out.printf(">> %s\n", k);
 	}
 
 
