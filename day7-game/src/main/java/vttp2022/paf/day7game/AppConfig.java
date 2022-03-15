@@ -21,9 +21,6 @@ public class AppConfig {
 	@Value("${spring.redis.database}")
 	private Integer redisDatabase;
 
-	@Value("${this.is.my.prop}")
-	private String myProp;
-
 	@Bean(name="games")
 	public RedisTemplate<String, String> createRedis() {
 		RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
