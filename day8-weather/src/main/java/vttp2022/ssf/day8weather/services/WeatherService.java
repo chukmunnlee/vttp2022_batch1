@@ -17,6 +17,7 @@ public class WeatherService {
 
     private static final String URL = "https://api.openweathermap.org/data/2.5/weather";
 
+    // export OPEN_WEATHER_MAP="abc123"
     @Value("${open.weather.map}")
     private String apiKey;
 
