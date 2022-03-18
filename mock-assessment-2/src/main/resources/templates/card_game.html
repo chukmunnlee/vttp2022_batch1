@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cards</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+
+        <h1>Deck id: <code data-th-text="${deck.deckId}"></code> </h1>
+
+        <form method="POST" data-th-action="|/deck/${deck.deckId}|">
+
+            <table>
+                <tr>
+                    <td class="col-card">
+                        <div data-th-if="${deck.remaining > 0}">
+                            <img src="https://deckofcardsapi.com/static/img/back.png" class="card">
+                        </div>
+                    </td>
+                    <td>
+                        <h3>Remaining cards: <span data-th-text="${deck.remaining}"></span></h3>
+
+                        <div>
+                            <select name="draw_count">
+                                <option 
+                                    data-th-each="i: ${#numbers.sequence(1, deck.remaining)}"
+                                    data-th-value="${i}" data-th-text="${i}">
+                                </option>
+                            </select>
+                            <button type="submit">Draw</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        <div data-th-if="${cards.size() > 0}">
+            <img data-th-each="c: ${cards}" data-th-src="${c.image}" class="card shadow">
+        </div>
+        
+    </body>
+</html>
