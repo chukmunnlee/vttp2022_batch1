@@ -9,9 +9,11 @@
     </head>
     <body>
 
-        <h1>Deck id: <code data-th-text="${deck.deckId}"></code> </h1>
+        <h1>Deck id: <code data-th-text="${deck.deckId}"></code> ( <span data-th-text="${visited}"></span> )</h1>
 
         <form method="POST" data-th-action="|/deck/${deck.deckId}|">
+
+            <input type="hidden" name="hidden_drawn" data-th-value="${drawn}">
 
             <table>
                 <tr>
@@ -39,7 +41,10 @@
         </form>
 
         <div data-th-if="${cards.size() > 0}">
+            <!--
             <img data-th-each="c: ${cards}" data-th-src="${c.image}" class="card shadow">
+            -->
+            <img data-th-each="c: ${cards}" data-th-src="${c}" class="card shadow">
         </div>
         
     </body>
