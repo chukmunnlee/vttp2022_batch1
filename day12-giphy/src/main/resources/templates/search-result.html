@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
+        integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Your search of <code data-th-text="${q}"></code></h1>
+            </div>
+        </div>
+
+        <div class="row mt-3 mb-5">
+            <div class="col d-flex justify-content-end">
+                <a href="/" class="btn btn-info btn-lg">Back</a>
+            </div>
+        </div>
+
+        <div class="row mb-3" data-th-each="i: ${images}">
+            <div class="col">
+                <img data-th-src="${i}" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <a href="/" class="btn btn-danger btn-lg">Back</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
