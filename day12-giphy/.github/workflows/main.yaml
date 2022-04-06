@@ -18,4 +18,10 @@ jobs:
       with:
         maven-version: '3.8.4'
     - name: Run test
-      run: mvn clean  verify
+      run: mvn clean verify
+    - name: Generate coverage badge
+      uses: cicirello/jacoco-badge-generator@v2
+      with:
+        generate-branches-badge: true
+        generate-coverage-badge: true
+        jacoco-csv-file: target/site/jacoco/jacoco.csv
