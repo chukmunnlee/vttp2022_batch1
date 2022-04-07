@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .mt-3vh {
+                margin-top: 3vh;;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>BFF Database</h1>
+
+        <form method="POST" action="/bff">
+            <table>
+                <tr>
+                    <td> <label for="email">Email</label> </td>
+                    <td> <input type="email" name="email" size="40" required> </td>
+                </tr>
+                <tr>
+                    <td> <label for="name">Name</label> </td>
+                    <td> <input type="text" name="name" size="40" required> </td>
+                </tr>
+                <tr>
+                    <td> <label for="phone">Phone</label> </td>
+                    <td> <input type="tel" name="phone" size="40" required> </td>
+                </tr>
+                <tr>
+                    <td> <label for="dob">Data of Birth</label> </td>
+                    <td> <input type="date" name="dob"> </td>
+                </tr>
+                <tr>
+                    <td> <label for="email">Status</label> </td>
+                    <td> 
+                        <select name="status">
+                            <option value="friend" selected>Friend</option>
+                            <option value="foe">Foe</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label for="passphrase">Passphrase</label> </td>
+                    <td> <input type="password" name="passphrase" required> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Add</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span data-th-text="${message}"></span></td>
+                </tr>
+            </table>
+        </form>
+
+        <h3 data-th-if="${#lists.isEmpty(bffs)}" class="mt-3vh">
+            You have no besties! Try adding some
+        </h3>
+
+        <table data-th-unless="${#lists.isEmpty(bffs)}" border="1" class="mt-3vh">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>DoB</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-th-each="bff: ${bffs}">
+                    <td><span data-th-text="${bff.name}"></span></td>
+                    <td><span data-th-text="${bff.email}"></span></td>
+                    <td><span data-th-text="${bff.phone}"></span></td>
+                    <td><span data-th-text="${bff.dob}"></span></td>
+                    <td><span data-th-text="${bff.status}"></span></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </body>
+</html>
