@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Purchase Order</title>
+</head>
+<body>
+
+	<h1>New Purchase Order</h1>
+
+	<form method="POST" action="/purchase_order">
+
+		<table>
+			<tr>
+				<td>
+					<label for="name">Name</label>
+				</td>
+				<td>
+					<input id="name" type="text" name="name" size="40" required>
+				</td>
+			</tr>
+			<tr>
+				<td>Date:</td>
+				<td>
+					<input type="date" name="date">
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th> SKU </th>
+					<th> Quantity </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<input type="number" name="sku-0" value="" min=1>
+					</td>
+					<td>
+						<input type="text" name="qty-0" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="number" name="sku-1" value="" min=1>
+					</td>
+					<td>
+						<input type="text" name="qty-1" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="number" name="sku-2" value="" min=1>
+					</td>
+					<td>
+						<input type="text" name="qty-2" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="number" name="sku-3" value="" min=1>
+					</td>
+					<td>
+						<input type="text" name="qty-3" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="number" name="sku-4" value="" min=1>
+					</td>
+					<td>
+						<input type="text" name="qty-4" value="">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<button type="submit">Create PO</button>
+
+	</form>
+	
+</body>
+</html>
