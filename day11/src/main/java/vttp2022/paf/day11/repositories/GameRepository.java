@@ -43,6 +43,9 @@ public class GameRepository {
     }
     
     public Optional<Game> getGameByGid(Integer queryGid) {
+
+        System.out.printf("++++++ GameRepository.getGameByGid: %d\n", queryGid);
+
         final SqlRowSet result = template.queryForRowSet(
             // select * from game where gid = <gid>
             SQL_SELECT_GAME_BY_GID, queryGid

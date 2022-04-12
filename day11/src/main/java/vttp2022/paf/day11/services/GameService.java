@@ -15,6 +15,9 @@ public class GameService {
     private GameRepository gameRepo;
 
     public Optional<Game> getComments(Integer gid) {
+
+        System.out.printf(">>>>> GameService.getComments: %d\n", gid);
+
         Optional<Game> opt = gameRepo.getGameByGid(gid);
         if (opt.isEmpty())
             return Optional.empty();
@@ -23,5 +26,4 @@ public class GameService {
         return Optional.of(game);
     }
 
-    
 }
