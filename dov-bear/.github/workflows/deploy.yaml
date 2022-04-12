@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout src 
       uses: actions/checkout@v2
+    - name: Echo branch
+      run: echo "Branch ${{ github.ref_name }}"
     - name: Deploy
       uses: akhileshns/heroku-deploy@v3.12.12 
       with:
