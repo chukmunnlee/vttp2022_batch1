@@ -29,7 +29,7 @@ public class BFF {
     public Date getDob() { return dob; }
     public void setDob(Date dob) { this.dob = dob; }
 
-    @Override
+    //@Override
     public String toString() {
         return "BFF [dob=" + dob + ", email=" + email + ", name=" + name + ", passphrase=" + passphrase + ", phone="
                 + phone + ", status=" + status + "]";

@@ -5,7 +5,6 @@ public class BFFException extends Exception {
     private String reason;
 
     public BFFException(String reason) {
-        super();
         this.reason = reason;
     }
 
