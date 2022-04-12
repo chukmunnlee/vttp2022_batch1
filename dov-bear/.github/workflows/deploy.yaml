@@ -1,0 +1,19 @@
+name: Deploy to Heroku
+on: 
+  push:
+    tags:
+    - 'v*'
+    - '!v*-alpha'
+jobs:
+  deploy_to_heroku:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout src 
+      uses: actions/checkout@v2
+    - name: Deploy
+      uses: akhileshns/heroku-deploy@v3.12.12 
+      with:
+        heroku_api_key: ${{ secrets.heroku_api_key }}
+        heroku_app_name: mybearapp
+        heroku_email: ${{ secrets.email }}
+        branch: ${{ github.ref_name }}
