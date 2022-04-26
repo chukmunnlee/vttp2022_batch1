@@ -11,12 +11,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import vttp2020.paf.revision.tx.models.Account;
 import vttp2020.paf.revision.tx.repositories.AccountRepository;
+import vttp2020.paf.revision.tx.services.FundsTransferService;
 
 @SpringBootTest
 class TxApplicationTests {
 
 	@Autowired
 	private AccountRepository acctRepo;
+
+	@Autowired
+	private FundsTransferService fundsTransferSvc;
 
 	@Test
 	void shouldFindFred() {
@@ -36,12 +40,20 @@ class TxApplicationTests {
 			() -> acctRepo.deposit("wilma", 100f));
 	}
 
+	/*
 	@Test void shouldBeAbleToWithdraw() {
-		Float amount = 50f;
+		Float amount = 100f;
 
-		acctRepo.deposit("fred", amount);
+		//acctRepo.deposit("fred", amount);
 
-		assertTrue(acctRepo.withdraw("fred", amount));
+		assertTrue(acctRepo.deposit("fred", amount));
+	}
+	*/
+
+	@Test
+	public void notTransactional() {
+		fundsTransferSvc.transfer("barney", "fred", 50f);
+		assertTrue(true);
 	}
 
 }
