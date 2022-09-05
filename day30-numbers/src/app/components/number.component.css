@@ -1,0 +1,12 @@
+img {
+  width: 20vw;
+  border: 1px solid gray;
+}
+
+div {
+  margin: 8px;
+}
+
+.center-it {
+  display: flex;
+}
