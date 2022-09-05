@@ -33,7 +33,8 @@ export class NumberComponent implements OnInit {
   }
 
   imageClicked() {
-    console.info(`---- current: ${this._current}`)
+    console.info(`---- current: ${this._current}`, this._current)
+    console.info("---- current: ", this._current)
     this.onImageClicked.next(this._current)
   }
 
