@@ -1,0 +1,12 @@
+<h1><code>hello, world</code></h1>
+
+<h2>{{ image }} ({{ count }})</h2>
+
+<app-display (clicked)="imageClicked($event)"></app-display>
+
+<app-display caption="image of bulldog">
+</app-display>
+
+<app-display image="/assets/bulldog_2.jpeg" caption="This is my bulldog"
+  (clicked)="imageClicked($event)" >
+</app-display>
