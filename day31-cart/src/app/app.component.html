@@ -1,0 +1,12 @@
+<h1>Shopping Cart</h1>
+
+<table>
+	<tr>
+		<td>
+			<app-item (onNewItem)="newItem($event)"></app-item>
+		</td>
+		<td>
+			<app-cart [cart]="cart" (onDeleteItem)="itemDeleted($event)"></app-cart>
+		</td>
+	</tr>
+</table>
