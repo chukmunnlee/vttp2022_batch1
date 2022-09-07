@@ -1,0 +1,60 @@
+
+<h2>Order</h2>
+
+<form [formGroup]="form" (ngSubmit)="saveOrder()">
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td>
+				<input type="text" size="30" formControlName="name">
+			</td>
+		</tr>
+		<tr>
+			<td>Mobile:</td>
+			<td>
+				<input type="tel" size="30" formControlName="mobile">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="submit">Save</button>
+			</td>
+			<td style="float: right;">
+				<button type="button" (click)="addItem()">Add</button>
+			</td>
+		</tr>
+	</table>
+	<div style="border: 1px solid grey; padding: 10px; margin-top: 10px;"
+      *ngIf="lineItems.controls.length <= 0">
+      <h2>Your order is empty</h2>
+  </div>
+
+
+	<div style="border: 1px solid grey; padding: 10px; margin-top: 10px;"
+      *ngIf="lineItems.controls.length > 0">
+		<h3>Items</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody formArrayName="lineItems">
+				<tr *ngFor="let li of lineItems.controls;let i = index" [formGroup]="li">
+					<td>
+						<input type="text" size="20" formControlName="item">
+					</td>
+					<td>
+						<input type="number" min="1" value="1" formControlName="quantity">
+					</td>
+					<td>
+						<button type="button" (click)="removeItem(i)">
+              X
+            </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form>

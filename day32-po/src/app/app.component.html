@@ -1,0 +1,12 @@
+<h1>ACME Ordering System</h1>
+
+<table>
+	<tr>
+		<td style="width: 48vw; padding-right: 20px;">
+			<app-order (onNewOrder)="processNewOrder($event)"></app-order>
+		</td>
+		<td>
+			<app-inventory [version]="version"></app-inventory>
+		</td>
+	</tr>
+</table>
