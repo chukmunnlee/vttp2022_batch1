@@ -1,0 +1,49 @@
+
+<h2>Place Order Here</h2>
+
+<div>
+	<form [formGroup]="orderForm" (ngSubmit)="processOrder()">
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td>
+					<input type="text" size="30" formControlName="name">
+				</td>
+			</tr>
+			<tr>
+				<td>Mobile:</td>
+				<td>
+					<input type="tel" size="30" formControlName="mobile">
+				</td>
+			</tr>
+			<tr>
+				<td> <button type="submit">Save</button> </td>
+				<td> <button type="button" (click)="addItem()">Add</button> </td>
+			</tr>
+		</table>
+
+		<div style="margin-top: 15px;" *ngIf="lineItemsArray.controls.length > 0">
+			<table>
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>Quantity</th>
+					</tr>
+				</thead>
+				<tbody formArrayName="lineItems">
+					<tr *ngFor="let li of lineItemsArray.controls; let idx = index;" [formGroup]="li">
+						<td>
+							<input type="text" size="30" formControlName="item">
+						</td>
+						<td>
+							<input type="number" min="1" formControlName="quantity">
+						</td>
+						<td>
+							<button type="button" (click)="removeItem(idx)">X</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
+</div>
