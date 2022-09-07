@@ -1,0 +1,23 @@
+.box-it {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.no-border {
+  border: 0px;
+}
+
+.notice {
+  font-style: italic;
+  font-size: .9em;
+}
+
+.red-border {
+  border: red 1px solid;
+}
+
+input {
+  margin: 5px;
+}
