@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {LineItem, Order} from '../models';
@@ -8,7 +8,7 @@ import {LineItem, Order} from '../models';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnChanges {
 
 	@Input()
 	order!: Order
@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit {
 	@Output()
 	onNewOrder = new Subject<Order>()
 
+	_order!: Order
 	orderForm!: FormGroup
 	lineItemsArray!: FormArray
 
@@ -23,6 +24,18 @@ export class OrderComponent implements OnInit {
 
 	ngOnInit(): void { 
 		this.orderForm = this.createOrder(this.order)
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		console.info('>>>> changes: ', changes)
+		console.info('>>>> orderForm.dirty: ', this.orderForm?.dirty)
+		if (this.orderForm?.dirty && !confirm(`You have not saved your current edit. Discard?`)) {
+			this.order = this._order
+			return
+		}
+
+		this.orderForm = this.createOrder(this.order)
+		this._order = this.order
 	}
 
 	addItem() {
@@ -34,7 +47,12 @@ export class OrderComponent implements OnInit {
 
 	processOrder() {
 		const order: Order = this.orderForm.value as Order
-		console.info('>>> order: ', order)
+		if (!!this.order?.orderId) {
+			order.orderId = this.order.orderId
+			// @ts-ignore
+			this.order = null
+			this._order = this.order
+		}
 		this.orderForm = this.createOrder()
 		this.onNewOrder.next(order)
 	}

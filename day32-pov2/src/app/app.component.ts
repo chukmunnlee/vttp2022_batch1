@@ -10,15 +10,19 @@ import { Order, OrderDB } from './models'
 })
 export class AppComponent implements OnInit {
 
-	orderDB: OrderDB = {}
+	ordersDB: OrderDB = {}
+	order!: Order
 
 	ngOnInit(): void {
 	}
 
 	processNewOrder(newOrder: Order) {
-		const orderId = v4().substring(0, 8)
+		let orderId = !newOrder.orderId? v4().substring(0, 8): newOrder.orderId
 		newOrder.orderId = orderId
-		this.orderDB = { ...this.orderDB, newOrder }
-		console.info("... db: ", this.orderDB)
+		this.ordersDB = { ...this.ordersDB, [orderId]: newOrder }
+	}
+
+	editOrder(key: string) {
+		this.order = this.ordersDB[key]
 	}
 }

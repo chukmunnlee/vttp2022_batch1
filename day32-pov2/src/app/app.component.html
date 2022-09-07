@@ -3,10 +3,10 @@
 <table>
 	<tr>
 		<td>
-			<app-order (onNewOrder)="processNewOrder($event)"></app-order>
+			<app-order [order]="order" (onNewOrder)="processNewOrder($event)"></app-order>
 		</td>
 		<td>
-			<app-inventory></app-inventory>
+			<app-inventory [ordersDB]="ordersDB" (onEdit)="editOrder($event)"></app-inventory>
 		</td>
 	</tr>
 </table>

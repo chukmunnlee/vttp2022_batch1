@@ -1,1 +1,6 @@
-<p>inventory works!</p>
+
+<h2>Inventories</h2>
+
+<div *ngFor="let o of ordersDB | keyvalue; let i = index;" (click)="edit(o.key)">
+	[<code>{{ o.key }}</code>] - <span>{{ o.value.name }}</span>
+</div>

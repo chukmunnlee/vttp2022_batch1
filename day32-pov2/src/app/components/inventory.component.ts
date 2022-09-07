@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Order} from '../models';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import {Subject} from 'rxjs';
+import {OrderDB} from '../models';
 
 @Component({
   selector: 'app-inventory',
@@ -8,8 +9,18 @@ import {Order} from '../models';
 })
 export class InventoryComponent implements OnInit {
 
-  constructor() { }
+	@Input()
+	ordersDB!: OrderDB
+
+	@Output()
+	onEdit = new Subject<string>()
+
+	constructor() { }
 
 	ngOnInit(): void { }
+
+	edit(key: string) {
+		this.onEdit.next(key)
+	}
 
 }
