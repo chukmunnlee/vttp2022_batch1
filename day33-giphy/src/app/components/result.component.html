@@ -1,0 +1,8 @@
+
+<div *ngIf="images.length > 0">
+  <h2>Search Result</h2>
+
+  <div *ngFor="let i of images;">
+    <img [src]="i">
+  </div>
+</div>
