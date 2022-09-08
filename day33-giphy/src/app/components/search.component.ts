@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
       })
       .catch(error => {
         console.error('>>>> error: ', error)
+        alert(`>>> error ${JSON.stringify(error)}`)
       })
 	}
 

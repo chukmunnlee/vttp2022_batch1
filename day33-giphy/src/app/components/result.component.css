@@ -1,0 +1,14 @@
+.picture {
+  margin: 10px;
+  border: 1px grey solid;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  width: 90%;
+  height: auto;
+}
+
+.picture > img {
+  width: 90%;
+  height: auto;
+}
