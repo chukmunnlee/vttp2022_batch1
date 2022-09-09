@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Registration } from './models';
 import { RegistrationService } from './services/registration.service';
@@ -16,9 +17,11 @@ export class AppComponent {
     this.registrationSvc.newRegistration(newRegistration)
       .then(result => {
         console.info('>>>> result: ', result)
+        alert(`Your registration ID is ${result.message}`)
       })
-      .catch(error => {
+      .catch((error: HttpErrorResponse) => {
         console.error('>>>> error: ', error)
+        alert(`Error: message=${error.message}, data=${error.error}`)
       })
   }
 }

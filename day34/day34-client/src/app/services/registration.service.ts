@@ -18,7 +18,6 @@ export class RegistrationService {
 
       return lastValueFrom(
         this.http.post<Response>(URL, registration, { headers })
-          //.pipe()
       )
   }
 
