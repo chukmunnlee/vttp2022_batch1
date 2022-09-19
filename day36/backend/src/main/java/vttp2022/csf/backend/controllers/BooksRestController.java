@@ -26,7 +26,7 @@ public class BooksRestController {
     public ResponseEntity<String> getBooks(@RequestParam(defaultValue = "20") Integer limit, 
             @RequestParam(defaultValue = "0") Integer offset) {
 
-        List<BookSummary> summaries = bookSvc.search(limit, offset);
+        List<BookSummary> summaries = bookSvc.getBooks(limit, offset);
 
         JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
         for (BookSummary summary: summaries)
@@ -34,5 +34,4 @@ public class BooksRestController {
 
         return ResponseEntity.ok(arrBuilder.build().toString());
     }
-    
 }

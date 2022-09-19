@@ -1,0 +1,20 @@
+<h2>{{ book.title }}</h2>
+
+<table>
+  <tr>
+    <td>{{ book.description }}</td>
+  </tr>
+  <tr>
+    <td>{{ book.authors }}</td>
+  </tr>
+  <tr>
+    <td>{{ book.rating }}</td>
+  </tr>
+  <tr>
+    <td><img [src]="book.imageUrl" alt=""></td>
+  </tr>
+</table>
+
+<button type="button" [routerLink]="[ '/' ]">
+  Back to list
+</button>

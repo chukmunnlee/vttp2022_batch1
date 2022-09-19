@@ -1,12 +1,18 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { firstValueFrom } from "rxjs";
-import { BookSummary } from "../models";
+import { Book, BookSummary } from "../models";
 
 @Injectable()
 export class BookService {
 
   constructor(private http: HttpClient) { }
+
+  getBookById(bookId: string): Promise<Book> {
+    return firstValueFrom(
+      this.http.get<Book>(`/api/book/${bookId}`)
+    )
+  }
 
   getBooks(limit = 20, offset = 0): Promise<BookSummary[]> {
     const params = new HttpParams()

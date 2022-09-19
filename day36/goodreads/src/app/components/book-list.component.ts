@@ -14,6 +14,7 @@ export class BookListComponent implements OnInit {
   constructor(private bookSvc: BookService) { }
 
   ngOnInit(): void {
+
     this.bookSvc.getBooks()
       .then(result => {
         console.info('>>> books: ', result)
