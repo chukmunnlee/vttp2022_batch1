@@ -1,0 +1,13 @@
+<h1>My first SPA</h1>
+
+<div class="red-box">
+    <a [routerLink]="[ '/' ]">Home</a>
+    <a [routerLink]="[ '/', 'dog' ]">Dog</a>
+    <a [routerLink]="[ '/cat' ]">Cat</a>
+    <button type="button" [routerLink]="['/cat' ]">Cat</button>
+    <button type="button" (click)="clicked()">Click Me!</button>
+</div>
+
+<div class="red-box">
+  <router-outlet></router-outlet>
+</div>
