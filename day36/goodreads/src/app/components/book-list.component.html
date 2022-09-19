@@ -1,0 +1,7 @@
+
+<ul>
+  <li *ngFor="let b of books">
+    <a [routerLink]="['/api/book', b.bookId]">{{ b.title }}</a>
+
+  </li>
+</ul>

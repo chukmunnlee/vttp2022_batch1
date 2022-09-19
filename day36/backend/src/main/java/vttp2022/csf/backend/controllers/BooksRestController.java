@@ -16,7 +16,7 @@ import vttp2022.csf.backend.models.BookSummary;
 import vttp2022.csf.backend.serivces.BookService;
 
 @RestController
-@RequestMapping(path="/books", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path="/api/books", produces = MediaType.APPLICATION_JSON_VALUE)
 public class BooksRestController {
 
     @Autowired
