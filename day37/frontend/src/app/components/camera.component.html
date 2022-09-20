@@ -1,0 +1,12 @@
+
+<div class="center-it">
+  <webcam [width]="width" [trigger]="snapObs" (imageCapture)="snapshot($event)">
+
+  </webcam>
+  <div>
+    <button type="button" (click)="capture()">Capture</button>
+  </div>
+  <div>
+    <img [src]="captureImage" class="thumbnail">
+  </div>
+</div>

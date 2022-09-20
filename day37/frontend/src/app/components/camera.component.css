@@ -1,0 +1,11 @@
+.center-it {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 30vw;
+  height: auto;
+  margin-top: 20px;
+}

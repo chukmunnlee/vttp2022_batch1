@@ -1,0 +1,18 @@
+<h2>Post It!</h2>
+
+<form [formGroup]="form" (ngSubmit)="post()">
+
+  <div >
+    <img [src]="imageSrc" class="thumbnail">
+  </div>
+
+  <div>
+    <label for="title">Title: </label>
+    <input type="text" size="30" formControlName="title">
+  </div>
+  <div>
+    <button type="button" [routerLink]="['/']">Cancel</button>
+    <button type="submit">Post It</button>
+  </div>
+
+</form>
