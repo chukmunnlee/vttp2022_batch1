@@ -12,7 +12,7 @@ export class UploadService {
     data.set('title', title)
     data.set('myfile', file)
     return firstValueFrom(
-      this.http.post<any>('/upload', data)
+      this.http.post<any>('/upload/spaces', data)
     )
   }
 }
