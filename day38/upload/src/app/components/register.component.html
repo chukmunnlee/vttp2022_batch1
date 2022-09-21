@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="fill">
+
+    <mat-label>Name</mat-label>
+    <input type="text" placeholder="Your name please" matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" placeholder="Your email please" matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Newsletter</mat-label>
+    <mat-select formControlName="newsletter">
+      <mat-option value="yes">Yes</mat-option>
+      <mat-option value="no">No</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="space-around">
+    <button type="button" mat-raised-button color="accent">
+      Cancel
+      <mat-icon fontIcon="cancel"></mat-icon>
+    </button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
+      Register
+    </button>
+
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="apart">
+  <mat-icon (click)="toggleSidebar()">menu</mat-icon>
+  <span>My Toolbar</span>
+</mat-toolbar>
+
+<mat-drawer-container autosize>
+
+  <mat-drawer #myDrawer>
+    <mat-list>
+      <mat-list-item [routerLink]="['/']" (click)="myDrawer.toggle()">
+        Register
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/upload']" (click)="myDrawer.toggle()">
+        Upload
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <div class="full-height">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
