@@ -1,0 +1,31 @@
+
+<div class="center-it">
+  <img [src]="imageData" [width]="imageWidth">
+</div>
+
+<form [formGroup]="form" (ngSubmit)="shareIt()">
+
+  <table>
+    <tr>
+      <td> <label for="title">Title</label> </td>
+      <td>
+        <input type="text" id="title" placeholder="Title" formControlName="title" size="40">
+      </td>
+    </tr>
+
+    <tr>
+      <td> <label for="caption">Caption</label> </td>
+      <td> <textarea id="caption" cols="30" rows="4" formControlName="caption"></textarea>
+      </td>
+    </tr>
+
+  </table>
+
+
+  <div class="space-evenly">
+    <button type="button" [routerLink]="['/']">Cancel</button>
+    <button type="submit" [disabled]="!canShare">Share {{ canShare }}</button>
+  </div>
+
+</form>
+
