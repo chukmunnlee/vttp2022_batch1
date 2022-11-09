@@ -1,0 +1,90 @@
+--- 
+apiVersion: v1 
+kind: Namespace
+metadata:
+  name: myns
+
+--- 
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: dov-bear-cm
+  labels: 
+    app: dov-bear 
+  namespace: myns
+data: 
+  INSTANCE_NAME: dov-bear-k8s
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dov-bear-deploy
+  labels:
+    app: dov-bear
+  namespace: myns
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: dov-bear-po
+      dept: eng
+  template: 
+    metadata:
+      name: dov-bear-po
+      labels:
+        name: dov-bear-po
+        dept: eng
+    spec:
+      containers:
+      - name: dov-bear-container
+        image: chukmunnlee/dov-bear:v4
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 3000
+        - containerPort: 3100
+        envFrom:
+        - configMapRef: 
+            name: dov-bear-cm
+        - secretRef:
+            name: dov-bear-secret
+
+--- 
+apiVersion: v1 
+kind: Service
+metadata: 
+  name: dov-bear-svc
+  labels:
+    app: dov-bear
+  namespace: myns
+spec: 
+  type: ClusterIP
+  selector:
+    name: dov-bear-po
+    dept: eng
+  ports:
+  - name: p8080 
+    port: 8080 
+    targetPort: 3000
+    protocol: TCP
+  - name: p8100 
+    port: 8100
+    targetPort: 3100
+    protocol: TCP
+
+---
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: dov-bear-svc-lb
+  namespace: myns
+spec: 
+  type: LoadBalancer
+  selector: 
+    name: dov-bear-po
+    dept: eng
+  ports: 
+  - name: p80 
+    port: 80
+    targetPort: 3000

@@ -1,0 +1,14 @@
+---
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: fortune-po
+  labels:
+    dev: chuk 
+spec: 
+  containers:
+  - name: fortune-container
+    image: chukmunnlee/fortune:v2 
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 3000
