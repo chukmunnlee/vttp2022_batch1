@@ -1,0 +1,8 @@
+---
+apiVersion: v1 
+kind: Namespace 
+metadata:
+  name: myns
+  labels:
+    owner: chuk
+    dept: eng
